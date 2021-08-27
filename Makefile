@@ -10,4 +10,4 @@ build:
 
 .PHONY: clean
 clean:
-	rm ./gdeck
+	rm ./gdeck ./cards_db.csv
