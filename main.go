@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 func main() {
 	cards := newDeck()
 
@@ -17,5 +19,10 @@ func main() {
 	// cards2.print()
 
 	cards2.shuffle()
-	cards2.print()
+	// cards2.print()
+
+	// -- Structs --
+	single_card := newCard("Spades", "Ace")
+	fmt.Println(single_card.toString())
+
 }

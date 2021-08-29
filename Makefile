@@ -2,7 +2,7 @@
 
 .PHONY: run
 run:
-	go run *.go
+	go run main.go deck.go card.go
 
 .PHONY: build
 build:
