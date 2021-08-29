@@ -1,19 +1,25 @@
 package main
 
+import "fmt"
+
 // card type
-type card struct {
-	suit  string
-	value string
+type Card struct {
+	Suit  string `json:"suit"`
+	Value string `json:"value"`
 }
 
-func newCard(suit string, value string) card {
-	tempCard := card{
-		suit:  suit,
-		value: value,
+func newCard(suit string, value string) Card {
+	tempCard := Card{
+		Suit:  suit,
+		Value: value,
 	}
 	return tempCard
 }
 
-func (c card) toString() string {
-	return c.value + " of " + c.suit
+func (c Card) String() string {
+	return fmt.Sprintf("%v-%v", c.Value, c.Suit)
+}
+
+func (c Card) toString() string {
+	return fmt.Sprintf("%v-%v", c.Value, c.Suit)
 }

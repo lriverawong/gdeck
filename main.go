@@ -5,24 +5,27 @@ import "fmt"
 func main() {
 	cards := newDeck()
 
-	// hand, remainingCards := deal(cards, 5)
-	// hand.print()
-	// remainingCards.print()
-
+	// Different printing varieties
+	// fmt.Println(cards)
+	// cards.printJSON()
 	// fmt.Println(cards.toString())
 
-	cards_db := "cards_db.csv"
+	// Pass by value/copy, the original still remains intact
+	hand, remainingCards := deal(cards, 5)
+	fmt.Println(hand, "\n\n", remainingCards)
+
+	cards_db := "cards_db.json"
 
 	cards.saveToFile(cards_db)
 
-	cards2 := newDeckFromFile(cards_db)
-	// cards2.print()
+	// cards2 := newDeckFromFile(cards_db)
+	// // cards2.print()
 
-	cards2.shuffle()
+	// cards2.shuffle()
 	// cards2.print()
 
 	// -- Structs --
-	single_card := newCard("Spades", "Ace")
-	fmt.Println(single_card.toString())
+	// single_card := newCard("Spades", "Ace")
+	// fmt.Println(single_card)
 
 }
