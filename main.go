@@ -24,9 +24,4 @@ func main() {
 
 	cards2.shuffle()
 	fmt.Println("Deck after <shuffle>: \n", cards2)
-
-	// -- Structs --
-	// single_card := newCard("Spades", "Ace")
-	// fmt.Println(single_card)
-
 }

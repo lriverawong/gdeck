@@ -9,23 +9,25 @@ import (
 func TestNewDeck(t *testing.T) {
 	d := newDeck()
 
-	if len(d) != 52 {
-		t.Errorf("Expected deck length of 52, but got %v", len(d))
+	if len(d.Cards) != 52 {
+		t.Errorf("Expected deck length of 52, but got %v", len(d.Cards))
 	}
 
 	// Check first card in deck
-	if d[0] != "Ace of Spades" {
-		t.Errorf("Expected deck to start with <Ace of Spades> but got %v", d[0])
+	firstCard := Card{Suit: "Spades", Value: "Ace"}
+	if d.Cards[0] != firstCard {
+		t.Errorf("Expected deck to start with <Ace of Spades> but got %v", d.Cards[0])
 	}
 
 	// Check last card in deck
-	if d[len(d)-1] != "King of Clubs" {
-		t.Errorf("Expected deck to start with <King of Clubs> but got %v", d[len(d)-1])
+	lastCard := Card{Suit: "Clubs", Value: "King"}
+	if d.Cards[len(d.Cards)-1] != lastCard {
+		t.Errorf("Expected deck to start with <King of Clubs> but got %v", d.Cards[len(d.Cards)-1])
 	}
 
 }
 
-func TestSaveToDeckAndNewDeckFromFile(t *testing.T) {
+func TestStreamSaveToFileAndNewDeckFromFile(t *testing.T) {
 	testFileName := "_decktesting"
 	deck := newDeck()
 
@@ -33,14 +35,14 @@ func TestSaveToDeckAndNewDeckFromFile(t *testing.T) {
 	os.Remove(testFileName)
 
 	// Write test file
-	deck.saveToFile(testFileName)
+	deck.streamSaveToFile(testFileName)
 
 	// Read test file
-	loadedDeck := newDeckFromFile(testFileName)
+	loadedDeck := streamNewDeckFromFile(testFileName)
 
 	// Testing
-	if len(loadedDeck) != 52 {
-		t.Errorf("Expected 52 cards in deck, got %v", len(loadedDeck))
+	if len(loadedDeck.Cards) != 52 {
+		t.Errorf("Expected 52 cards in deck, got %v", len(loadedDeck.Cards))
 	}
 
 	// Remove test file created
