@@ -12,14 +12,15 @@ func main() {
 
 	// Pass by value/copy, the original still remains intact
 	hand, remainingCards := deal(cards, 5)
-	fmt.Println(hand, "\n\n", remainingCards)
+	fmt.Println("Deck from Hand-Draw: \n", hand)
+	fmt.Println("Remainder from deck: \n", remainingCards)
 
 	cards_db := "cards_db.json"
 
-	cards.saveToFile(cards_db)
+	cards.streamSaveToFile(cards_db)
 
-	// cards2 := newDeckFromFile(cards_db)
-	// // cards2.print()
+	cards2 := streamNewDeckFromFile(cards_db)
+	fmt.Println("Deck from <streamNewDeckFromFile>: \n", cards2)
 
 	// cards2.shuffle()
 	// cards2.print()
