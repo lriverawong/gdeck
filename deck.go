@@ -4,7 +4,9 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"math/rand"
 	"os"
+	"time"
 )
 
 // Main deck holder type
@@ -127,17 +129,20 @@ func streamNewDeckFromFile(filename string) Deck {
 	return tempDeck
 }
 
-// // Shuffle the deck
-// func (d Deck) shuffle() {
-// 	// Generate the random seed
-// 	// Use the current time to generate an int64 number based on the current time
-// 	source := rand.NewSource(time.Now().UnixNano())
-// 	r := rand.New(source)
+// Shuffle the deck
+func (d Deck) shuffle() {
+	fmt.Println("--[i] shuffle --")
+	// Generate the random seed
+	// Use the current time to generate an int64 number based on the current time
+	fmt.Println("[i] Setting random seed.")
+	source := rand.NewSource(time.Now().UnixNano())
+	r := rand.New(source)
 
-// 	// Works based on indices
-// 	for i := range d {
-// 		newPosition := r.Intn(len(d) - 1)
-// 		// Swap the element at random index with current index element
-// 		d[i], d[newPosition] = d[newPosition], d[i]
-// 	}
-// }
+	fmt.Println("[i] Iterate through cards and shuffle each.")
+	// Works based on indices
+	for i := range d.Cards {
+		newPosition := r.Intn(len(d.Cards) - 1)
+		// Swap the element at random index with current index element
+		d.Cards[i], d.Cards[newPosition] = d.Cards[newPosition], d.Cards[i]
+	}
+}

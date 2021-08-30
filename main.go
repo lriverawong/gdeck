@@ -22,8 +22,8 @@ func main() {
 	cards2 := streamNewDeckFromFile(cards_db)
 	fmt.Println("Deck from <streamNewDeckFromFile>: \n", cards2)
 
-	// cards2.shuffle()
-	// cards2.print()
+	cards2.shuffle()
+	fmt.Println("Deck after <shuffle>: \n", cards2)
 
 	// -- Structs --
 	// single_card := newCard("Spades", "Ace")
